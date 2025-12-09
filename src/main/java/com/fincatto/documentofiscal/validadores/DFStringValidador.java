@@ -355,6 +355,15 @@ public abstract class DFStringValidador {
         }
     }
 
+    public static void tamanho15ou17N(final String string, final String info) {
+        if (string != null) {
+            DFStringValidador.apenasNumerico(string, info);
+            if (string.length() != 15 && string.length() != 17) {
+                throw new IllegalStateException(String.format("%s \"%s\" deve possuir 15 ou 17 caracteres", info, string));
+            }
+        }
+    }
+
     public static void tamanho12(final String string, final String info) {
         if (string != null) {
             DFStringValidador.validaTamanhoMaximo(string, 12, info);
@@ -535,6 +544,12 @@ public abstract class DFStringValidador {
         }
     }
 
+    public static void tamanho60a1000(final String string, final String info) {
+        if (string != null) {
+            DFStringValidador.intervalo(string, 60, 1000, info);
+        }
+    }
+
     public static void tamanho2a95(final String string, final String info) {
         if (string != null) {
             DFStringValidador.intervalo(string, 2, 95, info);
@@ -544,6 +559,12 @@ public abstract class DFStringValidador {
     public static void tamanho30(final String string, final String info) {
         if (string != null) {
             DFStringValidador.validaTamanhoMaximo(string, 30, info);
+        }
+    }
+
+    public static void tamanho2a85(final String string, final String info) {
+        if (string != null) {
+            DFStringValidador.intervalo(string, 2, 85, info);
         }
     }
 
@@ -609,6 +630,13 @@ public abstract class DFStringValidador {
     }
 
     public static void tamanho9N(final String string, final String info) {
+        if (string != null) {
+            DFStringValidador.apenasNumerico(string, info);
+            DFStringValidador.validaTamanhoMaximo(string, 9, info);
+        }
+    }
+
+    public static void tamanho1N(final String string, final String info) {
         if (string != null) {
             DFStringValidador.apenasNumerico(string, info);
             DFStringValidador.validaTamanhoMaximo(string, 9, info);

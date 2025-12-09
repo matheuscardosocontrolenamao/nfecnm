@@ -100,6 +100,9 @@ public class NFNotaInfoItemProduto extends DFBase {
     @Element(name = "indTot")
     private NFProdutoCompoeValorNota compoeValorNota;
 
+    @Element(name = "indBemMovelUsado", required = false)
+    private String indicadorBemMovelUsado;
+
     @ElementList(entry = "DI", inline = true, required = false)
     private List<NFNotaInfoItemProdutoDeclaracaoImportacao> declaracoesImportacao;
 
@@ -138,6 +141,12 @@ public class NFNotaInfoItemProduto extends DFBase {
 
     @Element(name = "nRECOPI", required = false)
     private String numeroRECOPI;
+
+    /**
+     * I05k - Classificação para subapuração do IBS na ZFM
+     */
+    @Element(name = "tpCredPresIBSZFM", required = false)
+    private String classificacaoSubapuracaoIbsZfm;
 
     public void setCodigo(final String codigo) {
         DFStringValidador.tamanho60(codigo, "Codigo Produto");
@@ -247,8 +256,12 @@ public class NFNotaInfoItemProduto extends DFBase {
     public void setCompoeValorNota(final NFProdutoCompoeValorNota compoeValorNota) {
         this.compoeValorNota = compoeValorNota;
     }
+    
+    public void setIndicadorBemMovelUsado(String indicadorBemMovelUsado) {
+		this.indicadorBemMovelUsado = indicadorBemMovelUsado;
+	}
 
-    public void setDeclaracoesImportacao(final List<NFNotaInfoItemProdutoDeclaracaoImportacao> declaracoesImportacao) {
+	public void setDeclaracoesImportacao(final List<NFNotaInfoItemProdutoDeclaracaoImportacao> declaracoesImportacao) {
         this.declaracoesImportacao = declaracoesImportacao;
     }
 
@@ -451,7 +464,11 @@ public class NFNotaInfoItemProduto extends DFBase {
         return this.compoeValorNota;
     }
 
-    public List<NFNotaInfoItemProdutoDeclaracaoImportacao> getDeclaracoesImportacao() {
+    public String getIndicadorBemMovelUsado() {
+		return indicadorBemMovelUsado;
+	}
+
+	public List<NFNotaInfoItemProdutoDeclaracaoImportacao> getDeclaracoesImportacao() {
         return this.declaracoesImportacao;
     }
 
@@ -509,5 +526,14 @@ public class NFNotaInfoItemProduto extends DFBase {
 
     public NFNotaInfoItemProdutoGrupoCreditoPresumido getGrupoCreditoPresumido() {
         return grupoCreditoPresumido;
+    }
+
+    public String getClassificacaoSubapuracaoIbsZfm() {
+        return classificacaoSubapuracaoIbsZfm;
+    }
+
+    public void setClassificacaoSubapuracaoIbsZfm(String classificacaoSubapuracaoIbsZfm) {
+        DFStringValidador.tamanho1N(classificacaoSubapuracaoIbsZfm, "Classificação Subapuração IBS ZFM");
+        this.classificacaoSubapuracaoIbsZfm = classificacaoSubapuracaoIbsZfm;
     }
 }
