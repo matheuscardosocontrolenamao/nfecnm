@@ -1,5 +1,6 @@
 package com.fincatto.documentofiscal.nfe400.classes;
 
+import com.fincatto.documentofiscal.DFAmbiente;
 import com.fincatto.documentofiscal.nfe400.classes.nota.assinatura.NFSignature;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -13,6 +14,9 @@ public class NFProtocolo extends DFBase {
 
     @Attribute(name = "versao", required = false)
     private String versao;
+
+    @Element(name = "tpAmb", required = false)
+    private DFAmbiente ambiente;
 
     @Element(name = "infProt")
     private NFProtocoloInfo protocoloInfo;
@@ -42,5 +46,13 @@ public class NFProtocolo extends DFBase {
 
     public void setAssinatura(NFSignature assinatura) {
         this.assinatura = assinatura;
+    }
+
+    public DFAmbiente getAmbiente() {
+        return ambiente;
+    }
+
+    public void setAmbiente(DFAmbiente ambiente) {
+        this.ambiente = ambiente;
     }
 }
